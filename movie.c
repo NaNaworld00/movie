@@ -57,16 +57,21 @@ int mv_printScore(void* obj, void* arg)
 int mv_printRunTime(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-
-	return;
+	if ((mvPtr->runTime) >= (*(int*)arg)) {
+		printMv(mvPtr);
+		return 1;
+	}
+	return 0;
 }
 
 int mv_printCountry(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	
-	
-	return;
+	if (strcmp(mvPtr->madeIn, (char*)arg) == 0) {
+		printMv(mvPtr);
+		return 1;
+	}
+	return 0;
 }
 
 

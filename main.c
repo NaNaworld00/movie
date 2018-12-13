@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
-	printf("ready done!\n");
+	printf("Ready done!\n");
 	printf("%i items are read\n", list_len(list));
 
 	//1.4 FILE close
@@ -64,17 +64,17 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 2: //print movies of specific country
-			    printf("\nselect a country : %s", country);
-			    
+			    printf(" -- select a country : ");
+			    arg = country;
+			    scanf("%s", country);
                 repFunc = mv_printCountry;
-                arg = NULL;
 				break;
 				
 			case 3: //print movies with long runtime
-                printf("lowest runtime : %d", &runTime);
-                
+                printf(" -- lowest runtime : ");
+                arg = &runTime;
+                scanf("%d", &runTime);
                 repFunc = mv_printRunTime;
-                arg = NULL;
 				break;
 				
 			case 4: //print movies with high score
@@ -96,7 +96,6 @@ int main(int argc, char *argv[]) {
 		}
 		
 		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		list_repeatFunc(repFunc, arg, list);
 		cnt = list_repeatFunc(repFunc, arg, list);
 		//2.3 print number of movies
 		printf(" - totally %i movies are listed!\n\n\n", cnt);

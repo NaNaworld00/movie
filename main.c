@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
 	fp = fopen("movie.dat", "r");
+	printf("Reading the data files......\n");
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
@@ -34,8 +35,8 @@ int main(int argc, char *argv[]) {
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
 	}
-	printf("Ready done!\n");
-	printf("%i items are read\n", list_len(list));
+	printf("Read done!");
+	printf("%i items are read\n\n\n", list_len(list));
 
 	//1.4 FILE close
 	//fclose(fp);
@@ -58,30 +59,40 @@ int main(int argc, char *argv[]) {
 			case 1: //print all the movies
 				printf("\nprinting all the movies in the list.....\n\n\n");
 				printf("----------------------------------------\n");
-				
 				repFunc = mv_printAll;
 				arg = NULL;
+				cnt = list_repeatFunc(repFunc, arg, list);
+		        printf("\n\n    - totally %i movies are listed!\n\n\n", cnt);
 				break;
 				
 			case 2: //print movies of specific country
 			    printf(" -- select a country : ");
 			    arg = country;
 			    scanf("%s", country);
+			    printf("----------------------------------------\n");
                 repFunc = mv_printCountry;
+                cnt = list_repeatFunc(repFunc, arg, list);
+		        printf("\n\n    - totally %i movies are listed!\n\n\n", cnt);
 				break;
 				
 			case 3: //print movies with long runtime
                 printf(" -- lowest runtime : ");
                 arg = &runTime;
                 scanf("%d", &runTime);
+                printf("----------------------------------------\n");
                 repFunc = mv_printRunTime;
+                cnt = list_repeatFunc(repFunc, arg, list);
+	        	printf("\n\n    - totally %i movies are listed!\n\n\n", cnt);
 				break;
 				
 			case 4: //print movies with high score
-				printf("lowest score : %f", &score);
-				
+				printf(" -- lowest score : ");
+				arg = &score;
+				scanf("%f", &score);
+				printf("----------------------------------------\n");
 				repFunc = mv_printScore;
-				arg = NULL;
+				cnt = list_repeatFunc(repFunc, arg, list);
+		        printf("\n\n    - totally %i movies are listed!\n\n\n", cnt);
 				break;
 				
 			case 5:
@@ -94,11 +105,6 @@ int main(int argc, char *argv[]) {
 				printf("wrong command! input again\n");
 				break;
 		}
-		
-		//2.2 printing operation by function pointer (list_repeatFunc() is called here)
-		cnt = list_repeatFunc(repFunc, arg, list);
-		//2.3 print number of movies
-		printf(" - totally %i movies are listed!\n\n\n", cnt);
 	}
 	
 	return 0;

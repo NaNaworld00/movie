@@ -32,7 +32,6 @@ void printMv(void* obj)
 	{
 		printf("[ERROR] failed to print the movie Info! (object is NULL)\n");
 	}
-	printf("----------------------------------------\n");
 	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
 	printf("running time : %i, score : %f\n", mvPtr->runTime, mvPtr->score);
 	printf("----------------------------------------\n");
@@ -50,8 +49,11 @@ int mv_printAll(void* obj, void* arg)
 int mv_printScore(void* obj, void* arg)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
-	
-	return;
+	if ((mvPtr->score) >= (*(float*)arg)) {
+		printMv(mvPtr);
+		return 1;
+	}
+	return 0;
 }
 
 int mv_printRunTime(void* obj, void* arg)

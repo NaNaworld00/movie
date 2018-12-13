@@ -50,28 +50,8 @@ ProductVersion=
 AutoIncBuildNr=0
 SyncProduct=1
 
-[Unit2]
-FileName=..\..\..\Users\SMPC\Desktop\movie.c
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=..\..\..\Users\SMPC\Desktop\movie.h
-CompileCpp=0
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit4]
-FileName=..\..\..\Users\SMPC\Desktop\linkedList.h
+FileName=linkedList.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -81,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=..\..\..\Users\SMPC\Desktop\linkedList.c
+FileName=movie.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -91,7 +71,27 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit1]
-FileName=..\..\..\Users\SMPC\Desktop\main.c
+FileName=main.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=movie.c
+CompileCpp=0
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=linkedList.c
 CompileCpp=0
 Folder=
 Compile=1
